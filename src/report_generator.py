@@ -59,7 +59,7 @@ def generate_report(symbol, company_name, stock_df, sentiment_df, result_df, out
     report_lines = []
     report_lines.append(f"# {company_name} ({symbol}) Financial sentimnet analysis report")
     report_lines.append(f"\n> Time of Create: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    report_lines.append(f"\n> Data Cycle: {stock_df['Date'].min()} 至 {stock_df['Date'].max()}")
+    report_lines.append(f"\n> Data Cycle: {stock_df['Date'].min()} to {stock_df['Date'].max()}")
     
     report_lines.append("\n## 📊 Key finding")
     

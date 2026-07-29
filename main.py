@@ -20,7 +20,7 @@ def run_full_analysis(symbol="MSFT", period="3mo", save_plots=True):
     """
     Run the entire analysis process with one click
     
-    参数:
+    data:
         symbol: stock symbol（like "MSFT", "AAPL", "0700.HK"）
         period: period（"1mo", "3mo", "1y"）
         save_plots: if saving the graph
@@ -112,10 +112,10 @@ if __name__ == "__main__":
     SYMBOL = "MSFT"      # Symbol
     PERIOD = "3mo"       # Period
     
-    # 确保目录存在
+    # ensure directory appear
     os.makedirs("data/raw", exist_ok=True)
     os.makedirs("data/processed", exist_ok=True)
     os.makedirs("reports/figures", exist_ok=True)
     
-    # 运行分析
+    # analysis
     run_full_analysis(SYMBOL, PERIOD)

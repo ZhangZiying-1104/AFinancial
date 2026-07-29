@@ -5,3 +5,4 @@ seaborn
 yfinance
 akshare
 nltk
+ycnbc

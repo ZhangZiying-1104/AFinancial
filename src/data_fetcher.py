@@ -75,7 +75,14 @@ def fetch_news_akshare(symbol, max_items=50):
         except Exception as e:
             print(f"   ⚠️ akshare news fetch failed: {e}")
             # Continue to fallback
+    if not symbol.isdigit() and not symbol.endswith('.HK'):
+        print(f"   📰 Attempting CNBC news for {symbol}...")
+        # symbol decide the kind of news，use 'latest'
+        cnbc_df = fetch_cnbc_news(category='latest', max_items=max_items)
+    if not cnbc_df.empty:
+            return cnbc_df
 
+    
     # 2. Fallback: generate mock news (for non‑numeric symbols or on failure)
     print(f"   📰 Using mock news data for {symbol} (demo mode)")
     return _generate_mock_news(symbol, max_items)
@@ -108,10 +115,58 @@ def _generate_mock_news(symbol, max_items=50):
     df = df.sort_values('time', ascending=False).reset_index(drop=True)
     return df
 
-# ========== 测试代码 ==========
+def fetch_cnbc_news(category='latest', max_items=20):
+    """
+    use ycnbc get CNBC news
+
+    """
+    try:
+        import ycnbc
+        news = ycnbc.News()
+        
+        # different method
+        if category == 'trending':
+            news_data = news.trending()
+        elif category == 'latest':
+            news_data = news.latest()
+        elif category == 'finance':
+            news_data = news.finance()
+        elif category == 'technology':
+            news_data = news.technology()
+        elif category == 'economy':
+            news_data = news.economy()
+        else:
+            news_data = news.latest()  # default latest
+        
+        # If the returned value is a list, convert it to a DataFrame
+        if isinstance(news_data, list) and len(news_data) > 0:
+            df = pd.DataFrame(news_data)
+            # Standardized column names (The fields returned by ycnbc may include 'title', 'pubDate', 'link', etc.)
+            # The actual field names may vary. Here, compatibility measures will be taken
+            if 'title' in df.columns and 'pubDate' in df.columns:
+                df = df.rename(columns={'pubDate': 'time'})
+            elif 'title' in df.columns and 'date' in df.columns:
+                df = df.rename(columns={'date': 'time'})
+            # ensure have 'time' raw
+            if 'time' not in df.columns:
+                # If the time cannot be found, use the current time as a placeholder
+                df['time'] = pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')
+            # limit number
+            df = df.head(max_items)
+            print(f"   ✅ successfully Get {len(df)} CNBC News (category: {category})")
+            return df[['title', 'time']]  # just keep key 
+        else:
+            print(f"   ⚠️ No CNBC News ")
+            return pd.DataFrame()
+            
+    except Exception as e:
+        print(f"   ⚠️ Fail: Get CNBC News: {e}")
+        return pd.DataFrame()
+
+# ========== Testing ==========
 if __name__ == "__main__":
-    # 测试：获取微软近3个月数据并保存
+    
     msft_df = save_stock_data("MSFT", period="3mo")
     
-    print("\n前5行数据预览：")
+    print("\n head：")
     print(msft_df.head())

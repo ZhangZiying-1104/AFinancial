@@ -119,6 +119,7 @@ AkShare News
 - NLTK (VADER)
 - Matplotlib
 - Seaborn
+- ycnbc
 
 ## Installation
 ### Installation dependencies

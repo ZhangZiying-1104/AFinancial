@@ -1,8 +1,11 @@
 # 📈 AFinancial
 ## Project Overview
-AFinancial is a financial data analysis project developed based on Python, used to analyze the relationship between "News Sentiment" and "Stock Return".
-The system can automatically complete the acquisition of stock data, the capture of financial news, data cleaning, sentiment analysis, correlation analysis and the generation of visual reports, achieving a complete data analysis process.
-The entire project adopts a modular design, facilitating the subsequent expansion of more analysis models and machine learning algorithms.
+Financial Sentiment Analysis System is a personal financial analysis tool developed with Python. It is designed to help users analyse the relationship between stock market movements and financial news sentiment.
+
+The system automatically collects historical stock data, processes financial news, performs sentiment analysis, and generates visual reports to provide insights into how market sentiment may relate to stock price changes.
+
+This project is mainly developed for personal research, learning, and data analysis purposes. It does not provide investment advice or guarantee future market performance.
+
 ### Features
 ### 1. Stock data acquisition
 **Use Yahoo Finance (yfinance) to obtain historical stock quotes, including:**
@@ -11,6 +14,7 @@ The entire project adopts a modular design, facilitating the subsequent expansio
 - Low
 - Close
 - Volume
+
 **Support custom stock codes, for example:**
 - MSFT
 - AAPL

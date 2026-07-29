@@ -209,10 +209,13 @@ It is used to measure the linear relationship between news sentiment and stock r
 ## Data source
 **Stock data**
 - Yahoo Finance（yfinance）
+
 **Financial News：**
+
 News sources:
 - AkShare (East Money financial news for A-share stocks)
 - CNBC (international financial news)
 - Mock news fallback for demonstration
+
 **Sentiment Analysis：**
 - NLTK VADER

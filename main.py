@@ -109,7 +109,7 @@ def run_full_analysis(symbol="MSFT", period="3mo", save_plots=True):
 
 if __name__ == "__main__":
     # modify parameter
-    SYMBOL = "MSFT"      # Symbol
+    SYMBOL = "XXXX"      # Symbol
     PERIOD = "3mo"       # Period
     
     # ensure directory appear

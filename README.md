@@ -1,6 +1,6 @@
 # 📈 AFinancial
 ## Project Overview
-Financial Sentiment Analysis System is a personal financial analysis tool developed with Python. It is designed to help users analyse the relationship between stock market movements and financial news sentiment.
+AFinancial is a personal financial analysis tool developed with Python. It is designed to help users analyse the relationship between stock market movements and financial news sentiment.
 
 The system automatically collects historical stock data, processes financial news, performs sentiment analysis, and generates visual reports to provide insights into how market sentiment may relate to stock price changes.
 

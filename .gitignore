@@ -1,13 +1,31 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
 
+# Virtual Environment
 venv/
+.venv/
+env/
+
+# Environment Variables
 .env
 
-.DS_Store
+# IDE
 .vscode/
+.idea/
 
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Generated Data
 data/raw/
 data/processed/
 
+# Generated Reports
 reports/figures/
+reports/*.docx
+reports/*.pdf
+
+# Logs
+*.log

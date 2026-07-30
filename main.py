@@ -15,6 +15,8 @@ from src.data_cleaner import clean_stock_data, clean_news_data
 from src.sentiment_analyzer import analyze_sentiment
 from src.analyzer import merge_and_analyze
 from src.report_generator import generate_report
+from src.ai_explainer import explain_analysis
+from src.pdf_generator import generate_docx_report
 
 def run_full_analysis(symbol="MSFT", period="3mo", save_plots=True):
     """
@@ -101,10 +103,20 @@ def run_full_analysis(symbol="MSFT", period="3mo", save_plots=True):
     )
     print("   ✅ The Report has been created in reports/ directory")
     
-    print("\n" + "=" * 60)
-    print(f"🎉 Done! Please refer to the reports and charts in the reports/ directory")
-    print("=" * 60)
-    
+     # -------- 7: create docx --------
+
+    print("\n🧠 [7/7] Generating AI insights and docx report...")
+    insights, suggestions = explain_analysis(stock_clean, result, company_name)
+    pdf_path = generate_pdf_report(
+        symbol=symbol,
+        company_name=company_name,
+        insights=insights,
+        suggestions=suggestions,
+        md_report_path=f"reports/{symbol}_report.md",
+        figure_path=f"reports/figures/{symbol}_analysis.png",
+        output_path=f"reports/{symbol}_final_report.docx"
+    )
+    print(f"   🎉 All reports ready! Please open {pdf_path}")
     return result
 
 if __name__ == "__main__":

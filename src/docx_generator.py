@@ -1,4 +1,4 @@
-# src/pdf_generator.py
+# src/docx_generator.py
 import os
 import re
 from datetime import datetime

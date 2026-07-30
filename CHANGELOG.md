@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.2.0] - 2026-07-30
+
+#### Added
+- 🤖 AI Explanation Module
+- 💡 Beginner-friendly financial interpretation
+- 📌 Rule-based educational recommendations
+- 📄 Microsoft Word (.docx) report export
+
+#### Improved
+- Better report readability
+- More structured analysis summaries
+- Enhanced user experience
+
+#### Fixed
+- Minor report formatting improvements
+
 ## [1.1.0] - 2026-07-29
 
 ### Added

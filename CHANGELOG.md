@@ -1,5 +1,39 @@
 # Changelog
 
+# [2.0.0] - 2026-08-03
+
+## 🚀 Major Release
+AFinancial has been transformed from a command-line tool into a browser-based web application.
+
+### Added
+- 🌐 FastAPI web application
+- 🎨 Browser-based user interface
+- 📊 Interactive financial analysis dashboard
+- 📈 Automatic stock analysis workflow
+- 📄 Downloadable Word reports
+- 🖼️ Embedded chart visualization
+- ⚡ Real-time analysis through web forms
+
+### Improved
+- Redesigned project architecture
+- Significantly improved user experience
+- Simplified analysis workflow
+- Better report presentation
+- Cleaner project structure
+- Enhanced accessibility for non-technical users
+
+### Changed
+- Migrated from CLI application to web application
+- Introduced FastAPI backend
+- Added Jinja2 template engine
+- Added static asset management
+- Refactored project structure for future scalability
+
+### Fixed
+- Improved report download handling
+- Better error handling for invalid stock symbols
+- Improved data processing stability
+
 ## [1.3.0] - 2026-08-03
 
 #### Added

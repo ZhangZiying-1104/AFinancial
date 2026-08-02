@@ -14,7 +14,7 @@ def clean_text(text):
     
     return re.sub(r'\n{3,}', '\n\n', text).strip()
 
-def generate_pdf_report(symbol, company_name, insights, suggestions,
+def generate_docx_report(symbol, company_name, insights, suggestions,
                         md_report_path, figure_path, output_path="reports/final_report.docx"):
     """
     The parameters remain the same as before, 

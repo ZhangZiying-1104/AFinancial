@@ -2,7 +2,7 @@
 
 ## [2.0.0] - 2026-08-03
 
-## 🚀 Major Release
+### 🚀 Major Release
 AFinancial has been transformed from a command-line tool into a browser-based web application.
 
 ### Added

@@ -1,31 +1,198 @@
-# Python
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*$py.class
 
-# Virtual Environment
-venv/
-.venv/
-env/
+# C extensions
+*.so
 
-# Environment Variables
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
 .env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-# IDE
-.vscode/
-.idea/
+# Spyder project settings
+.spyderproject
+.spyproject
 
-# Operating System
-.DS_Store
-Thumbs.db
+# Rope project settings
+.ropeproject
 
-# Generated Data
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ----------------------------------------------------------------------
+# Specific to your project
+# ----------------------------------------------------------------------
+
+# Data files – raw and processed data (often large, not for repo)
 data/raw/
 data/processed/
+data/external/
 
-# Generated Reports
-reports/figures/
-reports/*.docx
-reports/*.pdf
+# Generated reports and charts (can be regenerated)
+reports/
+*.docx
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.html
+
+# Static generated files (if your app generates charts/images)
+app/static/*.png
+app/static/*.jpg
+app/static/*.jpeg
+!app/static/.gitkeep   # keep the folder if needed
 
 # Logs
 *.log
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# IDE / editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Secret / sensitive files
+*.key
+*.pem
+*.crt
+*.p12
+.secrets
+config.ini
+credentials.json
+client_secret*.json
+
+# ----------------------------------------------------------------------
+# Keep the directory structure with .gitkeep if needed
+# ----------------------------------------------------------------------
+# Uncomment the following if you want to keep empty folders via .gitkeep
+# !data/raw/.gitkeep
+# !data/processed/.gitkeep
+# !reports/.gitkeep

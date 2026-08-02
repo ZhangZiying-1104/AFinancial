@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.3.0] - 2026-08-03
+
+#### Added
+- 🧠 AI Financial Analyst module
+- 📋 Executive Summary generation
+- 🔍 Multi-layer market observations
+- 🤔 Intelligent market interpretation
+- ⚠️ Risk assessment engine
+- 📚 Financial education section
+- ❓ AI-generated exploration questions
+- 🧩 Explainable AI analysis workflow
+
+#### Improved
+- More comprehensive AI-generated insights
+- Better financial reasoning and interpretation
+- Enhanced report structure and readability
+- More actionable investment suggestions
+- Improved educational support for beginner investors
+- Stronger explainability of analysis results
+
+#### Fixed
+- Refined AI recommendation logic
+- Improved consistency of generated analysis content
+- Minor formatting and text output improvements
+
 ## [1.2.0] - 2026-07-30
 
 #### Added

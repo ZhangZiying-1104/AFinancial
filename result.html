@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Result - {{ result.company_name }}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #f5f7fa;
+            padding: 30px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px 35px;
+        }
+        h1 {
+            font-size: 28px;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            color: #6c757d;
+            margin-bottom: 25px;
+            font-size: 15px;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 20px;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        .metric {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 16px 18px;
+        }
+        .metric .label {
+            font-size: 13px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .metric .value {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 4px;
+            color: #1a1a2e;
+        }
+        .section {
+            margin: 30px 0;
+        }
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #2d3748;
+            border-left: 4px solid #4f46e5;
+            padding-left: 12px;
+        }
+        .insight, .suggestion {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .insight { border-left: 4px solid #4f46e5; }
+        .suggestion { border-left: 4px solid #28a745; }
+        .chart-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .chart-container img {
+            max-width: 100%;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+        .btn {
+            padding: 12px 24px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-secondary {
+            background: #6c757d;
+        }
+        .btn:hover { opacity: 0.85; }
+        .back {
+            margin-top: 30px;
+            display: inline-block;
+            color: #4f46e5;
+            text-decoration: none;
+        }
+        .back:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            .metrics { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ result.company_name }} ({{ result.symbol }})</h1>
+        <p class="subtitle">
+            Period: {{ result.period }} &nbsp;·&nbsp; Generated on {{ now.strftime('%Y-%m-%d %H:%M') }}
+        </p>
+
+        <!-- Key Metrics -->
+        <div class="metrics">
+            <div class="metric">
+                <div class="label">Price Change</div>
+                <div class="value" style="color: {{ 'green' if result.price_change > 0 else 'red' }};">
+                    {{ "%.2f"|format(result.price_change) }}%
+                </div>
+            </div>
+            <div class="metric">
+                <div class="label">Avg Sentiment</div>
+                <div class="value">{{ "%.3f"|format(result.avg_sentiment) if result.avg_sentiment is not none else 'N/A' }}</div>
+            </div>
+            <div class="metric">
+                <div class="label">Sentiment-Return Correlation</div>
+                <div class="value">{{ "%.3f"|format(result.correlation) if result.correlation is not none else 'N/A' }}</div>
+            </div>
+        </div>
+
+        <!-- Chart -->
+        {% if result.chart_url %}
+        <div class="chart-container">
+            <h2>📈 Analysis Chart</h2>
+            <img src="{{ result.chart_url }}" alt="Analysis Chart">
+        </div>
+        {% endif %}
+
+        <!-- AI Insights -->
+        <div class="section">
+            <h2>🧠 AI Key Insights</h2>
+            {% for ins in result.insights %}
+            <div class="insight">{{ ins|safe }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Suggestions -->
+        <div class="section">
+            <h2>💡 Suggestions</h2>
+            {% for sug in result.suggestions %}
+            <div class="suggestion">{{ sug|safe }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Download Buttons -->
+        <div class="btn-group">
+            <a href="{{ result.word_report_url }}" class="btn" download>📄 Download Word Report</a>
+            <a href="/" class="btn btn-secondary">🏠 Home</a>
+        </div>
+
+        <a href="/" class="back">← Back to analyze another symbol</a>
+    </div>
+</body>
+</html>

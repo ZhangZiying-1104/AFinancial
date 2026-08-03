@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.0.1] - 2026-08-03
+Fixed the bug where the cnbc df variable was referenced before assignment
+
 ## [2.0.0] - 2026-08-03
 
 ### 🚀 Major Release

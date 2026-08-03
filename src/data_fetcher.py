@@ -52,39 +52,35 @@ def save_stock_data(symbol, period="3mo", raw_dir="data/raw"):
 
 def fetch_news_akshare(symbol, max_items=50):
     """
-    Fetch news using akshare for A‑share numeric codes.
-    For non‑numeric symbols (e.g., MSFT), generate mock news.
+    Unified news fetcher with multiple sources and graceful fallback.
     """
-    # 1. Try real news if symbol is numeric (A‑share)
+    # 1. A-stock
     if symbol.isdigit():
-        print(f"   📰 Fetching real news for A‑share ({symbol}) via akshare...")
+        print(f"   📰 Fetching A-share news for {symbol} via akshare...")
         try:
+            import akshare as ak
             news_df = ak.stock_news_em(symbol=symbol)
             if news_df is not None and not news_df.empty:
-                # Normalise column names
                 if 'title' in news_df.columns and 'time' in news_df.columns:
                     df = news_df[['title', 'time']].head(max_items)
-                    print(f"   ✅ Retrieved {len(df)} real news items")
+                    print(f"   ✅ Retrieved {len(df)} real A-share news items")
                     return df
-                else:
-                    print("   ⚠️ Column names mismatch, trying to adapt...")
-                    # You can add custom column mapping here if needed
-                    return pd.DataFrame()
-            else:
-                print("   ⚠️ akshare returned empty news data")
         except Exception as e:
-            print(f"   ⚠️ akshare news fetch failed: {e}")
-            # Continue to fallback
-    if not symbol.isdigit() and not symbol.endswith('.HK'):
-        print(f"   📰 Attempting CNBC news for {symbol}...")
-        # symbol decide the kind of news，use 'latest'
-        cnbc_df = fetch_cnbc_news(category='latest', max_items=max_items)
-    if not cnbc_df.empty:
-            return cnbc_df
+            print(f"   ⚠️ akshare A-share news failed: {e}")
 
-    
-    # 2. Fallback: generate mock news (for non‑numeric symbols or on failure)
-    print(f"   📰 Using mock news data for {symbol} (demo mode)")
+    # 2. try CNBC news
+    if not symbol.isdigit():
+        print(f"   📰 Attempting CNBC news for {symbol}...")
+        try:
+            cnbc_df = fetch_cnbc_news(category='latest', max_items=max_items)
+            if cnbc_df is not None and not cnbc_df.empty:
+                print(f"   ✅ Retrieved {len(cnbc_df)} CNBC news items")
+                return cnbc_df
+        except Exception as e:
+            print(f"   ⚠️ CNBC news failed: {e}")
+
+    # 3. if fail then back
+    print(f"   📰 Using mock news for {symbol} (demo mode)")
     return _generate_mock_news(symbol, max_items)
 
 

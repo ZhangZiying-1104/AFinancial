@@ -1,4 +1,4 @@
-# 📈 AFinancial: AI-Assisted Financial Intelligence and Decision Support System [v2.0.0]
+# 📈 AFinancial: AI-Assisted Financial Intelligence and Decision Support System [v2.0.1]
 ## Project Overview
 AFinancial is a Python-based financial analysis platform that integrates stock market data, financial news, sentiment analysis, statistical analysis, and AI-generated explanations into a single workflow.
 
